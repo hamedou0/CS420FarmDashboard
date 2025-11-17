@@ -7,14 +7,20 @@ import javafx.scene.Parent;
 import javafx.stage.Stage;
 
 public class DashboardApp extends Application {
+
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/dashboard.fxml"));
-        Scene scene = new Scene(root, 1100, 700);
+
+        // Load /resources/views/dashboard.fxml
+        Parent root = FXMLLoader.load(getClass().getResource("/views/dashboard.fxml"));
+
+        Scene scene = new Scene(root, 1200, 800);
         stage.setScene(scene);
-        stage.setTitle("Dashboard");
+        stage.setTitle("Farm Dashboard");
         stage.show();
     }
-    public static void main(String[] args) { 
-    	launch(args); }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
 }

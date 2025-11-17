@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.Label?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1">
+
+    <Label text="Nutrient Levels"
+           layoutX="40" layoutY="30"
+           style="-fx-font-size: 30; -fx-font-weight: bold;" />
+
+    <Label text="(Nitrogen, phosphorus, potassium distribution, soil health...)"
+           layoutX="40" layoutY="90"
+           style="-fx-font-size: 18; -fx-text-fill: gray;"/>
+</AnchorPane>
