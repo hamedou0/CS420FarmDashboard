@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="700.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="700.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.zac.dashboard.DashboardController">
 
     <left>
         <VBox spacing="10.0" BorderPane.alignment="CENTER">
@@ -26,7 +26,7 @@
             <Label style="-fx-font-weight: bold;" text="1. Items / item containers" />
 
             <HBox spacing="10.0">
-                <TreeView prefHeight="250.0" prefWidth="180.0">
+                <TreeView fx:id="treeView" prefHeight="250.0" prefWidth="180.0">
                     <root>
                         <TreeItem expanded="true" value="Root" />
                     </root>
@@ -34,34 +34,34 @@
 
                 <VBox spacing="5.0">
                     <Label style="-fx-font-weight: bold; -fx-background-color: lightgray; -fx-padding: 5 10 5 10;" text="Commands on Items" />
-                    <Button maxWidth="Infinity" text="Rename" />
-                    <Button maxWidth="Infinity" text="Change Location" />
-                    <Button maxWidth="Infinity" text="Change price" />
-                    <Button maxWidth="Infinity" text="Change dimensions" />
-                    <Button maxWidth="Infinity" text="Delete" />
+                    <Button maxWidth="Infinity" text="Rename" onAction="#handleRenameItem" />
+                    <Button maxWidth="Infinity" text="Change Location" onAction="#handleChangeItemLocation" />
+                    <Button maxWidth="Infinity" text="Change price" onAction="#handleChangeItemPrice" />
+                    <Button maxWidth="Infinity" text="Change dimensions" onAction="#handleChangeItemDimensions" />
+                    <Button maxWidth="Infinity" text="Delete" onAction="#handleDeleteItem" />
                 </VBox>
             </HBox>
 
             <VBox spacing="5.0">
                 <Label style="-fx-font-weight: bold; -fx-background-color: lightgray; -fx-padding: 5 10 5 10;" text="Commands on Item Containers" />
-                <Button maxWidth="Infinity" text="Rename" />
-                <Button maxWidth="Infinity" text="Change Location" />
-                <Button maxWidth="Infinity" text="Change price" />
-                <Button maxWidth="Infinity" text="Change dimensions" />
-                <Button maxWidth="Infinity" text="Add item" />
-                <Button maxWidth="Infinity" text="Add item-container" />
-                <Button maxWidth="Infinity" text="Delete" />
+                <Button maxWidth="Infinity" text="Rename" onAction="#handleRenameContainer" />
+                <Button maxWidth="Infinity" text="Change Location" onAction="#handleChangeContainerLocation" />
+                <Button maxWidth="Infinity" text="Change price" onAction="#handleChangeContainerPrice" />
+                <Button maxWidth="Infinity" text="Change dimensions" onAction="#handleChangeContainerDimensions" />
+                <Button maxWidth="Infinity" text="Add item" onAction="#handleAddItem" />
+                <Button maxWidth="Infinity" text="Add item-container" onAction="#handleAddItemContainer" />
+                <Button maxWidth="Infinity" text="Delete" onAction="#handleDeleteContainer" />
             </VBox>
 
             <Separator />
 
             <VBox spacing="5.0">
                 <Label style="-fx-font-weight: bold;" text="3. Drone Actions" />
-                <RadioButton text="Visit item contianer">
+                <RadioButton text="Visit item container" onAction="#handleVisitContainer">
                <toggleGroup>
                   <ToggleGroup fx:id="droneActions" />
                </toggleGroup></RadioButton>
-                <RadioButton text="Scan Farm" toggleGroup="$droneActions" />
+                <RadioButton text="Scan Farm" toggleGroup="$droneActions" onAction="#handleScanFarm" />
             </VBox>
         </VBox>
     </left>
