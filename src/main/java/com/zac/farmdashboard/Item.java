@@ -1,10 +1,14 @@
-package com.zac.dashboard.model;
+package com.zac.farmdashboard;
 
 public class Item {
     private String name;
-    private String location;
+    private String location;      // human-readable label
     private double price;
     private Dimension dimensions;
+
+    // coordinates on visualization
+    private double x;
+    private double y;
 
     public Item(String name, String location, double price, Dimension dimensions) {
         this.name = name;
@@ -13,6 +17,7 @@ public class Item {
         this.dimensions = dimensions;
     }
 
+    // basic properties
     public String getName() {
         return name;
     }
@@ -43,6 +48,20 @@ public class Item {
 
     public void setDimensions(Dimension dimensions) {
         this.dimensions = dimensions;
+    }
+
+    // visualization coordinates
+    public double getX() {
+        return x;
+    }
+
+    public double getY() {
+        return y;
+    }
+
+    public void setPosition(double x, double y) {
+        this.x = x;
+        this.y = y;
     }
 
     @Override

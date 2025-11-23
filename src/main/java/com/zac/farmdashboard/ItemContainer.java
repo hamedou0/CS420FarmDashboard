@@ -1,6 +1,7 @@
-package com.zac.dashboard.model;
+package com.zac.farmdashboard;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ItemContainer {
@@ -8,8 +9,12 @@ public class ItemContainer {
     private String location;
     private double price;
     private Dimension dimensions;
-    private List<Item> items;
-    private List<ItemContainer> childContainers;
+
+    private double x;
+    private double y;
+
+    private final List<Item> items;
+    private final List<ItemContainer> childContainers;
 
     public ItemContainer(String name, String location, double price, Dimension dimensions) {
         this.name = name;
@@ -20,6 +25,19 @@ public class ItemContainer {
         this.childContainers = new ArrayList<>();
     }
 
+    // this is for scanning the whole farm
+    public List<ItemContainer> getAllContainers() {
+        List<ItemContainer> all = new ArrayList<>();
+        all.add(this);
+
+        for (ItemContainer child : childContainers) {
+            all.addAll(child.getAllContainers());
+        }
+
+        return all;
+    }
+
+    // basic properties
     public String getName() {
         return name;
     }
@@ -52,28 +70,47 @@ public class ItemContainer {
         this.dimensions = dimensions;
     }
 
+    // coordinates
+    public double getX() {
+        return x;
+    }
+
+    public double getY() {
+        return y;
+    }
+
+    public void setPosition(double x, double y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    // composite relationships
     public List<Item> getItems() {
-        return items;
-    }
-
-    public void addItem(Item item) {
-        this.items.add(item);
-    }
-
-    public void removeItem(Item item) {
-        this.items.remove(item);
+        return Collections.unmodifiableList(items);
     }
 
     public List<ItemContainer> getChildContainers() {
-        return childContainers;
+        return Collections.unmodifiableList(childContainers);
+    }
+
+    public void addItem(Item item) {
+        if (item != null) {
+            items.add(item);
+        }
+    }
+
+    public void removeItem(Item item) {
+        items.remove(item);
     }
 
     public void addChildContainer(ItemContainer container) {
-        this.childContainers.add(container);
+        if (container != null) {
+            childContainers.add(container);
+        }
     }
 
     public void removeChildContainer(ItemContainer container) {
-        this.childContainers.remove(container);
+        childContainers.remove(container);
     }
 
     @Override

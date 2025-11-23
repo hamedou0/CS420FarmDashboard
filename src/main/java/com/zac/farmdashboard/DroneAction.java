@@ -1,4 +1,4 @@
-package com.zac.dashboard.model;
+package com.zac.farmdashboard;
 
 public enum DroneAction {
     VISIT_CONTAINER,

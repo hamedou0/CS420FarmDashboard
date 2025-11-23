@@ -1,4 +1,4 @@
-package com.zac.dashboard.model;
+package com.zac.farmdashboard;
 
 public class Dimension {
     private double width;

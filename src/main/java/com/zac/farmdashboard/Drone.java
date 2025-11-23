@@ -1,9 +1,6 @@
-package com.zac.dashboard.model;
+package com.zac.farmdashboard;
 
 public class Drone {
-    private String currentLocation;
-    private DroneStatus status;
-    private ItemContainer targetContainer;
 
     public enum DroneStatus {
         IDLE,
@@ -11,10 +8,13 @@ public class Drone {
         SCANNING
     }
 
+    private String currentLocation;
+    private DroneStatus status;
+    private ItemContainer targetContainer;
+
     public Drone(String currentLocation) {
         this.currentLocation = currentLocation;
         this.status = DroneStatus.IDLE;
-        this.targetContainer = null;
     }
 
     public String getCurrentLocation() {
@@ -29,24 +29,16 @@ public class Drone {
         return status;
     }
 
-    public void setStatus(DroneStatus status) {
-        this.status = status;
-    }
-
     public ItemContainer getTargetContainer() {
         return targetContainer;
     }
 
-    public void setTargetContainer(ItemContainer targetContainer) {
-        this.targetContainer = targetContainer;
-    }
-
-    public void visitContainer(ItemContainer container) {
-        this.targetContainer = container;
+    public void startVisit(ItemContainer container) {
         this.status = DroneStatus.VISITING;
+        this.targetContainer = container;
     }
 
-    public void scanFarm() {
+    public void startScan() {
         this.status = DroneStatus.SCANNING;
         this.targetContainer = null;
     }
